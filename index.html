@@ -148,6 +148,7 @@
             cursor: pointer;
             transition: all 0.3s;
             font-weight: 600;
+            margin-right: 10px;
         }
 
         .btn:hover {
@@ -162,6 +163,12 @@
 
         .btn-secondary:hover {
             background: #4d4d4d;
+        }
+
+        .btn-small {
+            padding: 5px 12px;
+            font-size: 14px;
+            margin-left: 5px;
         }
 
         .stats-grid {
@@ -350,12 +357,6 @@
             position: absolute;
             top: 15px;
             right: 15px;
-        }
-
-        .btn-small {
-            padding: 5px 12px;
-            font-size: 14px;
-            margin-left: 5px;
         }
 
         .recommendation-box {
@@ -552,9 +553,9 @@
                         <label>Gender</label>
                         <select id="userGender">
                             <option value="">Select</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
                 </div>
@@ -584,7 +585,7 @@
                         <p>Total Workouts</p>
                     </div>
                     <div class="stat-card">
-                        <h3 id="activeFriends">0</h3>
+                        <h3 id="activeFriends">3</h3>
                         <p>Active Friends</p>
                     </div>
                 </div>
@@ -644,7 +645,7 @@
                 </div>
                 <div class="form-group">
                     <label>Training Goal</label>
-                    <input type="text" placeholder="e.g., Gym 3x per week">
+                    <input type="text" id="trainingGoal" placeholder="e.g., Gym 3x per week">
                 </div>
                 <button class="btn" onclick="createStreak()">Create Streak Challenge</button>
             </div>
@@ -682,7 +683,7 @@
 
                 <div class="recommendation-box">
                     <h3>💡 Your Personalized Plan</h3>
-                    <p id="waterRecommendation">Based on your profile and activity level, you should drink approximately <strong>2.5 liters</strong> of water per day.</p>
+                    <p id="waterRecommendation">Based on your profile and activity level, you should drink approximately <strong>2.5 liters</strong> of water per day. As you increase your workout intensity, this recommendation will adjust.</p>
                 </div>
             </div>
 
@@ -856,11 +857,19 @@
 
     <script>
         // Data storage
-        let profileData = {};
+        let profileData = {
+            name: '',
+            age: '',
+            gender: '',
+            weight: '',
+            height: ''
+        };
         let sportsHistory = [];
         let waterIntake = {};
         let workoutLog = {};
         let weeklyWorkoutMinutes = 0;
+        let totalWorkouts = 0;
+        let currentStreak = 0;
 
         // Initialize calendars on load
         window.onload = function() {
@@ -881,12 +890,4 @@
             sections.forEach(section => section.classList.remove('active'));
             tabs.forEach(tab => tab.classList.remove('active'));
             
-            document.getElementById(sectionId).classList.add('active');
-            event.target.classList.add('active');
-        }
-
-        // Profile Management
-        function toggleEditProfile() {
-            document.getElementById('profileDisplay').classList.add('hidden');
-            document.getElementById('profileEdit').classList.remove('hidden');
-            document.getElementById('editProfileBtn').style.display = 'none
+            document.getElementById(sectionId).classList.add('
