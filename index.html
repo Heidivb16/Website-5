@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrainTogether - Social Fitness App</title>
+    <title>HLA Fitness - Social Fitness App</title>
     <style>
         * {
             margin: 0;
@@ -34,7 +34,7 @@
         .header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
-            color: #FF6B6B;
+            color: #F4A116;
         }
 
         .header p {
@@ -52,8 +52,8 @@
 
         .nav-tab {
             padding: 12px 24px;
-            background: rgba(255, 107, 107, 0.1);
-            border: 2px solid rgba(255, 107, 107, 0.3);
+            background: rgba(244, 161, 22, 0.1);
+            border: 2px solid rgba(244, 161, 22, 0.3);
             color: white;
             border-radius: 25px;
             cursor: pointer;
@@ -62,14 +62,14 @@
         }
 
         .nav-tab:hover {
-            background: rgba(255, 107, 107, 0.2);
+            background: rgba(244, 161, 22, 0.2);
             transform: translateY(-2px);
         }
 
         .nav-tab.active {
-            background: #FF6B6B;
+            background: #F4A116;
             color: black;
-            border-color: #FF6B6B;
+            border-color: #F4A116;
         }
 
         .content-section {
@@ -96,7 +96,7 @@
         }
 
         .card h2 {
-            color: #FF6B6B;
+            color: #F4A116;
             margin-bottom: 20px;
             font-size: 1.8em;
         }
@@ -129,7 +129,7 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #FF6B6B;
+            border-color: #F4A116;
         }
 
         .form-group input:disabled,
@@ -141,7 +141,7 @@
 
         .btn {
             padding: 12px 30px;
-            background: #FF6B6B;
+            background: #F4A116;
             color: black;
             border: none;
             border-radius: 25px;
@@ -154,7 +154,7 @@
 
         .btn:hover {
             transform: translateY(-2px);
-            background: #ff8585;
+            background: #ffb347;
         }
 
         .btn-secondary {
@@ -180,7 +180,7 @@
         }
 
         .stat-card {
-            background: linear-gradient(135deg, #FF6B6B 0%, #ff8585 100%);
+            background: linear-gradient(135deg, #F4A116 0%, #ffb347 100%);
             color: black;
             padding: 20px;
             border-radius: 12px;
@@ -207,7 +207,7 @@
             width: 120px;
             height: 300px;
             background: linear-gradient(to bottom, #1a1a1a 0%, #2d2d2d 100%);
-            border: 4px solid #FF6B6B;
+            border: 4px solid #F4A116;
             border-radius: 15px;
             position: relative;
             overflow: hidden;
@@ -218,7 +218,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to bottom, #FF6B6B 0%, #ff4757 100%);
+            background: linear-gradient(to bottom, #F4A116 0%, #ffb347 100%);
             height: 0%;
             transition: height 0.3s;
         }
@@ -239,7 +239,7 @@
             appearance: none;
             width: 20px;
             height: 20px;
-            background: #FF6B6B;
+            background: #F4A116;
             cursor: pointer;
             border-radius: 50%;
         }
@@ -247,7 +247,7 @@
         .water-slider::-moz-range-thumb {
             width: 20px;
             height: 20px;
-            background: #FF6B6B;
+            background: #F4A116;
             cursor: pointer;
             border-radius: 50%;
             border: none;
@@ -259,8 +259,30 @@
         }
 
         .water-stats h3 {
-            color: #FF6B6B;
+            color: #F4A116;
             font-size: 2em;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            background: #1a1a1a;
+            border-radius: 10px;
+            height: 30px;
+            margin: 15px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(135deg, #F4A116 0%, #ffb347 100%);
+            border-radius: 10px;
+            transition: width 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-weight: 700;
         }
 
         .calendar-container {
@@ -283,16 +305,16 @@
         }
 
         .calendar-day.today {
-            border-color: #FF6B6B;
+            border-color: #F4A116;
         }
 
         .calendar-day.has-data {
-            background: rgba(255, 107, 107, 0.2);
+            background: rgba(244, 161, 22, 0.2);
         }
 
         .calendar-day-number {
             font-weight: bold;
-            color: #FF6B6B;
+            color: #F4A116;
             margin-bottom: 5px;
         }
 
@@ -316,12 +338,12 @@
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 10px;
-            border-left: 4px solid #FF6B6B;
+            border-left: 4px solid #F4A116;
             position: relative;
         }
 
         .sport-entry h4 {
-            color: #FF6B6B;
+            color: #F4A116;
             margin-bottom: 5px;
         }
 
@@ -332,15 +354,15 @@
         }
 
         .recommendation-box {
-            background: rgba(255, 107, 107, 0.1);
-            border: 2px solid #FF6B6B;
+            background: rgba(244, 161, 22, 0.1);
+            border: 2px solid #F4A116;
             border-radius: 10px;
             padding: 20px;
             margin-top: 20px;
         }
 
         .recommendation-box h3 {
-            color: #FF6B6B;
+            color: #F4A116;
             margin-bottom: 10px;
         }
 
@@ -351,7 +373,7 @@
         }
 
         .profile-header {
-            background: linear-gradient(135deg, #FF6B6B 0%, #ff8585 100%);
+            background: linear-gradient(135deg, #F4A116 0%, #ffb347 100%);
             color: black;
             padding: 30px;
             border-radius: 15px;
@@ -370,7 +392,7 @@
             align-items: center;
             justify-content: center;
             font-size: 3em;
-            color: #FF6B6B;
+            color: #F4A116;
         }
 
         .edit-profile-btn {
@@ -430,7 +452,7 @@
         .workout-indicator {
             width: 8px;
             height: 8px;
-            background: #FF6B6B;
+            background: #F4A116;
             border-radius: 50%;
             margin: 2px auto;
         }
@@ -438,10 +460,6 @@
         .hidden {
             display: none;
         }
-
-        /* ====================================
-           FRIENDS SYSTEM STYLES
-           ==================================== */
 
         .section-header {
             display: flex;
@@ -452,12 +470,12 @@
 
         .section-title {
             font-size: 1.8em;
-            color: #FF6B6B;
+            color: #F4A116;
             font-weight: 600;
         }
 
         .badge {
-            background: #FF6B6B;
+            background: #F4A116;
             color: #000000;
             padding: 4px 12px;
             border-radius: 20px;
@@ -490,7 +508,7 @@
 
         .form-input:focus {
             outline: none;
-            border-color: #FF6B6B;
+            border-color: #F4A116;
             background: #252525;
         }
 
@@ -554,13 +572,13 @@
         }
 
         .btn-message {
-            background: #FF6B6B;
+            background: #F4A116;
             color: #000000;
             flex: 1;
         }
 
         .btn-message:hover {
-            background: #ff8585;
+            background: #ffb347;
         }
 
         .requests-container {
@@ -581,12 +599,12 @@
         }
 
         .request-card:hover {
-            border-color: #FF6B6B;
+            border-color: #F4A116;
             transform: translateX(5px);
         }
 
         .request-card.outgoing {
-            border-left: 4px solid #FF6B6B;
+            border-left: 4px solid #F4A116;
         }
 
         .request-avatar {
@@ -600,7 +618,7 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #FF6B6B 0%, #ff8585 100%);
+            background: linear-gradient(135deg, #F4A116 0%, #ffb347 100%);
             color: #000000;
             font-size: 1.3em;
             font-weight: 700;
@@ -644,8 +662,8 @@
         }
 
         .request-status.pending {
-            background: rgba(255, 107, 107, 0.2);
-            color: #FF6B6B;
+            background: rgba(244, 161, 22, 0.2);
+            color: #F4A116;
         }
 
         .request-actions {
@@ -673,9 +691,9 @@
         }
 
         .friend-card:hover {
-            border-color: #FF6B6B;
+            border-color: #F4A116;
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.2);
+            box-shadow: 0 10px 25px rgba(244, 161, 22, 0.2);
         }
 
         .friend-avatar {
@@ -718,7 +736,7 @@
 
         .stat-value {
             font-size: 1.1em;
-            color: #FF6B6B;
+            color: #F4A116;
             font-weight: 700;
         }
 
@@ -752,33 +770,31 @@
             color: #888888;
         }
 
-        .friends-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
+        .goal-edit-section {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
             margin-top: 20px;
         }
 
-        .friend-card-simple {
-            background: #1a1a1a;
+        .goal-display {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 15px;
-            border-radius: 12px;
-            border: 2px solid #3d3d3d;
-        }
-
-        .friend-card-simple h4 {
-            color: #FF6B6B;
+            background: #2d2d2d;
+            border-radius: 8px;
             margin-bottom: 10px;
         }
 
-        .streak-badge {
-            display: inline-block;
-            background: #FF6B6B;
-            color: black;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-weight: bold;
-            font-size: 14px;
+        .goal-label {
+            color: #F4A116;
+            font-weight: 600;
+        }
+
+        .goal-value {
+            color: white;
+            font-size: 1.1em;
         }
 
         @media (max-width: 768px) {
@@ -818,7 +834,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🏋️ TrainTogether</h1>
+            <h1>🏋️ HLA Fitness</h1>
             <p>Stay accountable. Build streaks. Achieve together.</p>
         </div>
 
@@ -838,7 +854,6 @@
                 <button class="btn edit-profile-btn" id="editProfileBtn" onclick="toggleEditProfile()">Edit Profile</button>
             </div>
 
-            <!-- Profile Display Mode -->
             <div class="card" id="profileDisplay">
                 <h2>Personal Information</h2>
                 <div class="profile-display">
@@ -865,7 +880,6 @@
                 </div>
             </div>
 
-            <!-- Profile Edit Mode -->
             <div class="card hidden" id="profileEdit">
                 <h2>Edit Personal Information</h2>
                 <div class="form-group">
@@ -913,13 +927,12 @@
                         <p>Total Workouts</p>
                     </div>
                     <div class="stat-card">
-                        <h3 id="activeFriends">8</h3>
+                        <h3 id="activeFriends">0</h3>
                         <p>Active Friends</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Linked Sports History Summary -->
             <div class="card">
                 <h2>Sports Background</h2>
                 <div id="profileSportsPreview">
@@ -930,273 +943,73 @@
 
         <!-- Friends & Streaks Section -->
         <div id="friends" class="content-section">
-            <!-- Friend Request Form Section -->
             <div class="card">
                 <div class="section-header">
                     <h2 class="section-title">Add New Friend</h2>
                 </div>
                 <form class="friend-request-form">
                     <div class="form-group">
-                        <label for="friend-input" class="form-label">Username or Email</label>
+                        <label for="friend-input" class="form-label">Search Registered Users</label>
                         <input 
                             type="text" 
                             id="friend-input" 
                             class="form-input" 
-                            placeholder="Enter username or email address"
+                            placeholder="Enter username of registered user"
                         >
                     </div>
                     <button type="button" class="btn" onclick="sendFriendRequest()">
                         <span class="btn-icon">➕</span>
                         Send Friend Request
                     </button>
-                    <div class="confirmation-message" id="confirmation-message">
-                        <!-- Confirmation messages will appear here -->
-                    </div>
+                    <div class="confirmation-message" id="confirmation-message"></div>
                 </form>
             </div>
 
-            <!-- Incoming Friend Requests Section -->
             <div class="card">
                 <div class="section-header">
                     <h2 class="section-title">Incoming Requests</h2>
-                    <span class="badge">3</span>
+                    <span class="badge" id="incomingBadge">0</span>
                 </div>
-                <div class="requests-container">
-                    <!-- Request Card 1 -->
-                    <div class="request-card">
-                        <div class="request-avatar">
-                            <span class="avatar-placeholder">SJ</span>
-                        </div>
-                        <div class="request-info">
-                            <h3 class="request-name">Sarah Johnson</h3>
-                            <p class="request-meta">@sarahj_fit • 2 hours ago</p>
-                            <p class="request-details">15 day streak • 45 workouts</p>
-                        </div>
-                        <div class="request-actions">
-                            <button class="btn btn-accept">Accept</button>
-                            <button class="btn btn-deny">Deny</button>
-                        </div>
-                    </div>
-
-                    <!-- Request Card 2 -->
-                    <div class="request-card">
-                        <div class="request-avatar">
-                            <span class="avatar-placeholder">MC</span>
-                        </div>
-                        <div class="request-info">
-                            <h3 class="request-name">Mike Chen</h3>
-                            <p class="request-meta">@mikechen • 5 hours ago</p>
-                            <p class="request-details">8 day streak • 32 workouts</p>
-                        </div>
-                        <div class="request-actions">
-                            <button class="btn btn-accept">Accept</button>
-                            <button class="btn btn-deny">Deny</button>
-                        </div>
-                    </div>
-
-                    <!-- Request Card 3 -->
-                    <div class="request-card">
-                        <div class="request-avatar">
-                            <span class="avatar-placeholder">AL</span>
-                        </div>
-                        <div class="request-info">
-                            <h3 class="request-name">Alex Liu</h3>
-                            <p class="request-meta">@alexliu_athlete • 1 day ago</p>
-                            <p class="request-details">22 day streak • 67 workouts</p>
-                        </div>
-                        <div class="request-actions">
-                            <button class="btn btn-accept">Accept</button>
-                            <button class="btn btn-deny">Deny</button>
-                        </div>
+                <div class="requests-container" id="incomingRequests">
+                    <div class="empty-state">
+                        <div class="empty-icon">📭</div>
+                        <p class="empty-text">No pending friend requests</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Outgoing Friend Requests Section -->
             <div class="card">
                 <div class="section-header">
                     <h2 class="section-title">Sent Requests</h2>
-                    <span class="badge">2</span>
+                    <span class="badge" id="sentBadge">0</span>
                 </div>
-                <div class="requests-container">
-                    <!-- Outgoing Request Card 1 -->
-                    <div class="request-card outgoing">
-                        <div class="request-avatar">
-                            <span class="avatar-placeholder">ED</span>
-                        </div>
-                        <div class="request-info">
-                            <h3 class="request-name">Emma Davis</h3>
-                            <p class="request-meta">@emmadavis • Sent 3 hours ago</p>
-                            <p class="request-status pending">Pending</p>
-                        </div>
-                        <div class="request-actions">
-                            <button class="btn btn-cancel">Cancel</button>
-                        </div>
-                    </div>
-
-                    <!-- Outgoing Request Card 2 -->
-                    <div class="request-card outgoing">
-                        <div class="request-avatar">
-                            <span class="avatar-placeholder">JR</span>
-                        </div>
-                        <div class="request-info">
-                            <h3 class="request-name">James Rodriguez</h3>
-                            <p class="request-meta">@jamesrod • Sent yesterday</p>
-                            <p class="request-status pending">Pending</p>
-                        </div>
-                        <div class="request-actions">
-                            <button class="btn btn-cancel">Cancel</button>
-                        </div>
+                <div class="requests-container" id="sentRequests">
+                    <div class="empty-state">
+                        <div class="empty-icon">📤</div>
+                        <p class="empty-text">No pending sent requests</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Friends List Section -->
             <div class="card">
                 <div class="section-header">
                     <h2 class="section-title">Your Training Partners</h2>
-                    <span class="badge">5</span>
+                    <span class="badge" id="friendsBadge">0</span>
                 </div>
-                <div class="friends-grid">
-                    <!-- Friend Card 1 -->
-                    <div class="friend-card">
-                        <div class="friend-avatar">
-                            <span class="avatar-placeholder large">KW</span>
-                        </div>
-                        <div class="friend-info">
-                            <h3 class="friend-name">Katie Wilson</h3>
-                            <p class="friend-username">@katiew_fitness</p>
-                        </div>
-                        <div class="friend-stats">
-                            <div class="stat-item">
-                                <span class="stat-value">🔥 28</span>
-                                <span class="stat-label">Day Streak</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-value">89</span>
-                                <span class="stat-label">Workouts</span>
-                            </div>
-                        </div>
-                        <div class="friend-actions">
-                            <button class="btn btn-message">Message</button>
-                            <button class="btn btn-secondary">View Profile</button>
-                        </div>
-                    </div>
-
-                    <!-- Friend Card 2 -->
-                    <div class="friend-card">
-                        <div class="friend-avatar">
-                            <span class="avatar-placeholder large">DP</span>
-                        </div>
-                        <div class="friend-info">
-                            <h3 class="friend-name">David Park</h3>
-                            <p class="friend-username">@davidpark_gym</p>
-                        </div>
-                        <div class="friend-stats">
-                            <div class="stat-item">
-                                <span class="stat-value">🔥 15</span>
-                                <span class="stat-label">Day Streak</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-value">52</span>
-                                <span class="stat-label">Workouts</span>
-                            </div>
-                        </div>
-                        <div class="friend-actions">
-                            <button class="btn btn-message">Message</button>
-                            <button class="btn btn-secondary">View Profile</button>
-                        </div>
-                    </div>
-
-                    <!-- Friend Card 3 -->
-                    <div class="friend-card">
-                        <div class="friend-avatar">
-                            <span class="avatar-placeholder large">LM</span>
-                        </div>
-                        <div class="friend-info">
-                            <h3 class="friend-name">Lisa Martinez</h3>
-                            <p class="friend-username">@lisamartinez</p>
-                        </div>
-                        <div class="friend-stats">
-                            <div class="stat-item">
-                                <span class="stat-value">🔥 42</span>
-                                <span class="stat-label">Day Streak</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-value">120</span>
-                                <span class="stat-label">Workouts</span>
-                            </div>
-                        </div>
-                        <div class="friend-actions">
-                            <button class="btn btn-message">Message</button>
-                            <button class="btn btn-secondary">View Profile</button>
-                        </div>
-                    </div>
-
-                    <!-- Friend Card 4 -->
-                    <div class="friend-card">
-                        <div class="friend-avatar">
-                            <span class="avatar-placeholder large">TB</span>
-                        </div>
-                        <div class="friend-info">
-                            <h3 class="friend-name">Tom Bradley</h3>
-                            <p class="friend-username">@tombradley_run</p>
-                        </div>
-                        <div class="friend-stats">
-                            <div class="stat-item">
-                                <span class="stat-value">🔥 7</span>
-                                <span class="stat-label">Day Streak</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-value">28</span>
-                                <span class="stat-label">Workouts</span>
-                            </div>
-                        </div>
-                        <div class="friend-actions">
-                            <button class="btn btn-message">Message</button>
-                            <button class="btn btn-secondary">View Profile</button>
-                        </div>
-                    </div>
-
-                    <!-- Friend Card 5 -->
-                    <div class="friend-card">
-                        <div class="friend-avatar">
-                            <span class="avatar-placeholder large">NH</span>
-                        </div>
-                        <div class="friend-info">
-                            <h3 class="friend-name">Nina Hernandez</h3>
-                            <p class="friend-username">@ninah_athlete</p>
-                        </div>
-                        <div class="friend-stats">
-                            <div class="stat-item">
-                                <span class="stat-value">🔥 35</span>
-                                <span class="stat-label">Day Streak</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-value">98</span>
-                                <span class="stat-label">Workouts</span>
-                            </div>
-                        </div>
-                        <div class="friend-actions">
-                            <button class="btn btn-message">Message</button>
-                            <button class="btn btn-secondary">View Profile</button>
-                        </div>
+                <div class="friends-grid" id="friendsList">
+                    <div class="empty-state">
+                        <div class="empty-icon">👥</div>
+                        <p class="empty-text">No friends yet. Send some requests to get started!</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Create Streak Challenge Section -->
             <div class="card">
                 <h2>Create Training Streak</h2>
                 <div class="form-group">
                     <label>Select Friend</label>
                     <select id="streakFriend">
                         <option value="">Choose a friend</option>
-                        <option value="katie">Katie Wilson</option>
-                        <option value="david">David Park</option>
-                        <option value="lisa">Lisa Martinez</option>
-                        <option value="tom">Tom Bradley</option>
-                        <option value="nina">Nina Hernandez</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -1235,11 +1048,35 @@
                     </div>
                 </div>
 
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="waterProgress">0%</div>
+                </div>
+
                 <button class="btn" onclick="logWater()">Log Water Intake</button>
 
                 <div class="recommendation-box">
-                    <h3>💡 Your Personalized Plan</h3>
-                    <p id="waterRecommendation">Based on your profile and activity level, you should drink approximately <strong>2.5 liters</strong> of water per day. As you increase your workout intensity, this recommendation will adjust.</p>
+                    <h3>💡 AI Recommendation</h3>
+                    <p id="waterRecommendation">Based on your profile and activity level, we recommend <strong>2.5 liters</strong> per day.</p>
+                </div>
+            </div>
+
+            <!-- Water Goals Settings -->
+            <div class="card">
+                <h2>Set Your Water Goals</h2>
+                <div class="goal-edit-section">
+                    <div class="form-group">
+                        <label>Daily Goal (ml)</label>
+                        <input type="number" id="customDailyWaterGoal" placeholder="2000" value="2000">
+                    </div>
+                    <div class="form-group">
+                        <label>Weekly Goal (liters)</label>
+                        <input type="number" id="customWeeklyWaterGoal" placeholder="14" value="14">
+                    </div>
+                    <div class="form-group">
+                        <label>Monthly Goal (liters)</label>
+                        <input type="number" id="customMonthlyWaterGoal" placeholder="60" value="60">
+                    </div>
+                    <button class="btn" onclick="saveWaterGoals()">Save Water Goals</button>
                 </div>
             </div>
 
@@ -1322,14 +1159,50 @@
             <div class="card">
                 <h2>Wellness & Training Recommendations</h2>
                 <div class="recommendation-box">
-                    <h3>🎯 Your Personalized Recommendations</h3>
+                    <h3>🎯 AI Recommendation</h3>
                     <div id="wellnessRecommendations">
                         <p><strong>Daily Exercise:</strong> 30-45 minutes of moderate activity</p>
                         <p><strong>Weekly Goal:</strong> 150-200 minutes of exercise</p>
                         <p><strong>Monthly Target:</strong> 10-12 hours of structured training</p>
-                        <p style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #FF6B6B;">
-                            💡 <em>These recommendations are based on your age, weight, and height. Adjust based on your fitness level and consult with a healthcare professional before starting any new exercise program.</em>
+                        <p style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #F4A116;">
+                            💡 <em>These recommendations are based on your age, weight, and height. Adjust based on your fitness level.</em>
                         </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Goals -->
+            <div class="card">
+                <h2>Set Your Personal Goals</h2>
+                <div class="goal-edit-section">
+                    <div class="form-group">
+                        <label>Daily Exercise Goal (minutes)</label>
+                        <input type="number" id="customDailyGoal" placeholder="30" value="30">
+                    </div>
+                    <div class="form-group">
+                        <label>Weekly Exercise Goal (minutes)</label>
+                        <input type="number" id="customWeeklyGoal" placeholder="150" value="150">
+                    </div>
+                    <div class="form-group">
+                        <label>Monthly Exercise Goal (hours)</label>
+                        <input type="number" id="customMonthlyGoal" placeholder="10" value="10">
+                    </div>
+                    <button class="btn" onclick="saveWellnessGoals()">Save Goals</button>
+                </div>
+
+                <div class="goal-edit-section" style="margin-top: 20px;">
+                    <h3 style="color: #F4A116; margin-bottom: 15px;">Your Current Goals</h3>
+                    <div class="goal-display">
+                        <span class="goal-label">Daily:</span>
+                        <span class="goal-value" id="displayDailyGoal">30 minutes</span>
+                    </div>
+                    <div class="goal-display">
+                        <span class="goal-label">Weekly:</span>
+                        <span class="goal-value" id="displayWeeklyGoal">150 minutes</span>
+                    </div>
+                    <div class="goal-display">
+                        <span class="goal-label">Monthly:</span>
+                        <span class="goal-value" id="displayMonthlyGoal">10 hours</span>
                     </div>
                 </div>
             </div>
@@ -1412,28 +1285,38 @@
     </div>
 
     <script>
+        // Simulated database of registered users
+        const registeredUsers = [
+            { username: 'sarah_fitness', name: 'Sarah Johnson', streak: 15, workouts: 45 },
+            { username: 'mike_gym', name: 'Mike Chen', streak: 8, workouts: 32 },
+            { username: 'alex_athlete', name: 'Alex Liu', streak: 22, workouts: 67 },
+            { username: 'katie_run', name: 'Katie Wilson', streak: 28, workouts: 89 },
+            { username: 'david_lift', name: 'David Park', streak: 15, workouts: 52 }
+        ];
+
         // Data storage
-        let profileData = {
-            name: '',
-            age: '',
-            gender: '',
-            weight: '',
-            height: ''
-        };
+        let currentUser = { username: 'you', isLoggedIn: true };
+        let profileData = { name: '', age: '', gender: '', weight: '', height: '' };
         let sportsHistory = [];
         let waterIntake = {};
         let workoutLog = {};
         let weeklyWorkoutMinutes = 0;
         let totalWorkouts = 0;
         let currentStreak = 0;
+        let friends = [];
+        let incomingRequests = [];
+        let sentRequests = [];
+        
+        // Custom goals
+        let customWaterGoals = { daily: 2000, weekly: 14, monthly: 60 };
+        let customWellnessGoals = { daily: 30, weekly: 150, monthly: 10 };
 
-        // Initialize calendars on load
         window.onload = function() {
             initializeDailyWaterCalendar();
             updateMonthlyCalendar();
             updateWorkoutCalendar();
+            updateFriendsDisplay();
             
-            // Set current month
             const currentMonth = new Date().getMonth();
             document.getElementById('monthSelector').value = currentMonth;
             document.getElementById('workoutMonthSelector').value = currentMonth;
@@ -1456,7 +1339,6 @@
             document.getElementById('profileEdit').classList.remove('hidden');
             document.getElementById('editProfileBtn').style.display = 'none';
             
-            // Load current values
             document.getElementById('userName').value = profileData.name || '';
             document.getElementById('userAge').value = profileData.age || '';
             document.getElementById('userGender').value = profileData.gender || '';
@@ -1480,7 +1362,6 @@
             if (name && age && gender && weight && height) {
                 profileData = { name, age, gender, weight, height };
                 
-                // Update display
                 document.getElementById('displayName').textContent = name;
                 document.getElementById('displayAge').textContent = age + ' years';
                 document.getElementById('displayGender').textContent = gender;
@@ -1488,7 +1369,6 @@
                 document.getElementById('displayHeight').textContent = height + ' cm';
                 document.getElementById('profileName').textContent = name;
                 
-                // Calculate personalized recommendations
                 const bmi = (weight / ((height/100) ** 2)).toFixed(1);
                 let weeklyMinutes = 150;
                 
@@ -1503,21 +1383,18 @@
                 const dailyMinutes = Math.round(weeklyMinutes / 7);
                 const monthlyHours = Math.round((weeklyMinutes * 4) / 60);
                 
-                // Update wellness recommendations
                 const recommendations = document.getElementById('wellnessRecommendations');
                 recommendations.innerHTML = `
                     <p><strong>Daily Exercise:</strong> ${dailyMinutes}-${dailyMinutes + 15} minutes of moderate activity</p>
                     <p><strong>Weekly Goal:</strong> ${weeklyMinutes}-${weeklyMinutes + 50} minutes of exercise</p>
                     <p><strong>Monthly Target:</strong> ${monthlyHours}-${monthlyHours + 2} hours of structured training</p>
                     <p><strong>BMI:</strong> ${bmi}</p>
-                    <p style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #FF6B6B;">
-                        💡 <em>These recommendations are based on your age, weight, and height. Adjust based on your fitness level and consult with a healthcare professional before starting any new exercise program.</em>
+                    <p style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #F4A116;">
+                        💡 <em>These are AI recommendations. You can set your own goals in the section below.</em>
                     </p>
                 `;
                 
-                // Update water recommendation
                 updateWaterRecommendation();
-                
                 cancelEditProfile();
                 alert('Profile saved successfully!');
             } else {
@@ -1525,30 +1402,159 @@
             }
         }
 
-        // Friend Request Function
+        // Friend System - Only Registered Users
         function sendFriendRequest() {
             const input = document.getElementById('friend-input');
             const message = document.getElementById('confirmation-message');
+            const username = input.value.trim();
             
-            if (input.value.trim()) {
-                message.className = 'confirmation-message success';
-                message.textContent = `Friend request sent to ${input.value}!`;
-                input.value = '';
-                
-                setTimeout(() => {
-                    message.className = 'confirmation-message';
-                }, 3000);
-            } else {
+            if (!username) {
                 message.className = 'confirmation-message error';
-                message.textContent = 'Please enter a username or email';
-                
-                setTimeout(() => {
-                    message.className = 'confirmation-message';
-                }, 3000);
+                message.textContent = 'Please enter a username';
+                setTimeout(() => message.className = 'confirmation-message', 3000);
+                return;
+            }
+
+            const user = registeredUsers.find(u => u.username.toLowerCase() === username.toLowerCase());
+            
+            if (!user) {
+                message.className = 'confirmation-message error';
+                message.textContent = 'User not found. Only registered users can be added.';
+                setTimeout(() => message.className = 'confirmation-message', 3000);
+                return;
+            }
+
+            if (friends.some(f => f.username === user.username)) {
+                message.className = 'confirmation-message error';
+                message.textContent = 'Already friends with this user';
+                setTimeout(() => message.className = 'confirmation-message', 3000);
+                return;
+            }
+
+            if (sentRequests.some(r => r.username === user.username)) {
+                message.className = 'confirmation-message error';
+                message.textContent = 'Friend request already sent';
+                setTimeout(() => message.className = 'confirmation-message', 3000);
+                return;
+            }
+
+            sentRequests.push(user);
+            message.className = 'confirmation-message success';
+            message.textContent = `Friend request sent to ${user.name}!`;
+            input.value = '';
+            
+            updateFriendsDisplay();
+            setTimeout(() => message.className = 'confirmation-message', 3000);
+        }
+
+        function updateFriendsDisplay() {
+            document.getElementById('friendsBadge').textContent = friends.length;
+            document.getElementById('incomingBadge').textContent = incomingRequests.length;
+            document.getElementById('sentBadge').textContent = sentRequests.length;
+            document.getElementById('activeFriends').textContent = friends.length;
+
+            // Update friends list
+            const friendsList = document.getElementById('friendsList');
+            if (friends.length === 0) {
+                friendsList.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">👥</div>
+                        <p class="empty-text">No friends yet. Send some requests to get started!</p>
+                    </div>
+                `;
+            } else {
+                friendsList.innerHTML = friends.map(friend => `
+                    <div class="friend-card">
+                        <div class="friend-avatar">
+                            <span class="avatar-placeholder large">${friend.name.split(' ').map(n => n[0]).join('')}</span>
+                        </div>
+                        <div class="friend-info">
+                            <h3 class="friend-name">${friend.name}</h3>
+                            <p class="friend-username">@${friend.username}</p>
+                        </div>
+                        <div class="friend-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">🔥 ${friend.streak}</span>
+                                <span class="stat-label">Day Streak</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">${friend.workouts}</span>
+                                <span class="stat-label">Workouts</span>
+                            </div>
+                        </div>
+                        <div class="friend-actions">
+                            <button class="btn btn-message">Message</button>
+                            <button class="btn btn-secondary">View Profile</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Update sent requests
+            const sentRequestsContainer = document.getElementById('sentRequests');
+            if (sentRequests.length === 0) {
+                sentRequestsContainer.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">📤</div>
+                        <p class="empty-text">No pending sent requests</p>
+                    </div>
+                `;
+            } else {
+                sentRequestsContainer.innerHTML = sentRequests.map((req, index) => `
+                    <div class="request-card outgoing">
+                        <div class="request-avatar">
+                            <span class="avatar-placeholder">${req.name.split(' ').map(n => n[0]).join('')}</span>
+                        </div>
+                        <div class="request-info">
+                            <h3 class="request-name">${req.name}</h3>
+                            <p class="request-meta">@${req.username} • Sent recently</p>
+                            <p class="request-status pending">Pending</p>
+                        </div>
+                        <div class="request-actions">
+                            <button class="btn btn-cancel" onclick="cancelRequest(${index})">Cancel</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Update streak friend selector
+            const streakSelector = document.getElementById('streakFriend');
+            streakSelector.innerHTML = '<option value="">Choose a friend</option>' +
+                friends.map(f => `<option value="${f.username}">${f.name}</option>`).join('');
+        }
+
+        function cancelRequest(index) {
+            sentRequests.splice(index, 1);
+            updateFriendsDisplay();
+        }
+
+        function createStreak() {
+            const friend = document.getElementById('streakFriend').value;
+            const goal = document.getElementById('trainingGoal').value;
+            
+            if (friend && goal) {
+                alert(`Streak challenge created! Goal: ${goal} 🔥`);
+                document.getElementById('streakFriend').value = '';
+                document.getElementById('trainingGoal').value = '';
+            } else {
+                alert('Please select a friend and enter a training goal');
             }
         }
 
-        // Water tracking
+        // Water Goals
+        function saveWaterGoals() {
+            const daily = parseInt(document.getElementById('customDailyWaterGoal').value);
+            const weekly = parseFloat(document.getElementById('customWeeklyWaterGoal').value);
+            const monthly = parseFloat(document.getElementById('customMonthlyWaterGoal').value);
+            
+            if (daily && weekly && monthly) {
+                customWaterGoals = { daily, weekly: weekly * 1000, monthly: monthly * 1000 };
+                document.getElementById('dailyWaterGoal').textContent = daily;
+                updateWaterProgress();
+                alert('Water goals saved successfully!');
+            }
+        }
+
         function updateWaterLevel() {
             const slider = document.getElementById('waterSlider');
             const waterLevel = document.getElementById('waterLevel');
@@ -1562,17 +1568,25 @@
             waterAmount.textContent = milliliters + ' ml';
         }
 
+        function updateWaterProgress() {
+            const today = new Date().toDateString();
+            const consumed = waterIntake[today] || 0;
+            const goal = customWaterGoals.daily;
+            const percentage = Math.min(Math.round((consumed / goal) * 100), 100);
+            
+            const progressBar = document.getElementById('waterProgress');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+        }
+
         function updateWaterRecommendation() {
             const weight = parseFloat(profileData.weight) || 70;
             let baseWater = weight * 33;
-            
             const workoutBonus = Math.round(weeklyWorkoutMinutes / 30) * 250;
             const totalWater = baseWater + workoutBonus;
             
-            document.getElementById('dailyWaterGoal').textContent = Math.round(totalWater);
-            
             const recommendation = document.getElementById('waterRecommendation');
-            recommendation.innerHTML = `Based on your profile (${profileData.weight || 70}kg) and activity level (${weeklyWorkoutMinutes} min/week), you should drink approximately <strong>${(totalWater/1000).toFixed(1)} liters</strong> of water per day. As you increase your workout intensity, this recommendation will adjust.`;
+            recommendation.innerHTML = `Based on your profile (${profileData.weight || 70}kg) and activity level (${weeklyWorkoutMinutes} min/week), we recommend <strong>${(totalWater/1000).toFixed(1)} liters</strong> per day. You can adjust your goals above.`;
         }
 
         function logWater() {
@@ -1591,6 +1605,7 @@
             
             document.getElementById('waterSlider').value = 0;
             updateWaterLevel();
+            updateWaterProgress();
             
             initializeDailyWaterCalendar();
             updateMonthlyCalendar();
@@ -1665,6 +1680,21 @@
             }
         }
 
+        // Wellness Goals
+        function saveWellnessGoals() {
+            const daily = parseInt(document.getElementById('customDailyGoal').value);
+            const weekly = parseInt(document.getElementById('customWeeklyGoal').value);
+            const monthly = parseInt(document.getElementById('customMonthlyGoal').value);
+            
+            if (daily && weekly && monthly) {
+                customWellnessGoals = { daily, weekly, monthly };
+                document.getElementById('displayDailyGoal').textContent = daily + ' minutes';
+                document.getElementById('displayWeeklyGoal').textContent = weekly + ' minutes';
+                document.getElementById('displayMonthlyGoal').textContent = monthly + ' hours';
+                alert('Wellness goals saved successfully!');
+            }
+        }
+
         // Sports History
         function addSport() {
             const sport = document.getElementById('sportName').value;
@@ -1677,12 +1707,7 @@
             if (sport && team) {
                 const sportEntry = {
                     id: Date.now(),
-                    sport,
-                    team,
-                    start,
-                    end,
-                    position,
-                    achievements
+                    sport, team, start, end, position, achievements
                 };
                 
                 sportsHistory.push(sportEntry);
@@ -1795,10 +1820,7 @@
             }
             
             workoutLog[today].push({
-                type,
-                duration,
-                intensity,
-                notes,
+                type, duration, intensity, notes,
                 timestamp: new Date().toLocaleTimeString()
             });
             
@@ -1813,7 +1835,8 @@
             const activeDays = Object.keys(workoutLog).length;
             document.getElementById('weeklyDays').textContent = `${Math.min(activeDays, 7)}/7`;
             
-            const goalPercentage = Math.min(Math.round((weeklyWorkoutMinutes / 150) * 100), 100);
+            const weeklyGoalValue = customWellnessGoals.weekly;
+            const goalPercentage = Math.min(Math.round((weeklyWorkoutMinutes / weeklyGoalValue) * 100), 100);
             document.getElementById('weeklyGoal').textContent = goalPercentage + '%';
             
             document.getElementById('workoutDuration').value = '';
@@ -1868,20 +1891,6 @@
                 `;
                 
                 calendar.appendChild(dayDiv);
-            }
-        }
-
-        // Streak Challenge
-        function createStreak() {
-            const friend = document.getElementById('streakFriend').value;
-            const goal = document.getElementById('trainingGoal').value;
-            
-            if (friend && goal) {
-                alert(`Streak challenge created with your friend! Goal: ${goal} 🔥`);
-                document.getElementById('streakFriend').value = '';
-                document.getElementById('trainingGoal').value = '';
-            } else {
-                alert('Please select a friend and enter a training goal');
             }
         }
     </script>
