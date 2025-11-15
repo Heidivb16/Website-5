@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrainTogether - Social Fitness App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #FF6B6B;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-tab {
+            padding: 12px 24px;
+            background: rgba(255, 107, 107, 0.1);
+            border: 2px solid rgba(255, 107, 107, 0.3);
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+
+        .nav-tab:hover {
+            background: rgba(255, 107, 107, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-tab.active {
+            background: #FF6B6B;
+            color: black;
+            border-color: #FF6B6B;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: #2d2d2d;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid #3d3d3d;
+        }
+
+        .card h2 {
+            color: #FF6B6B;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #cccccc;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #3d3d3d;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FF6B6B;
+        }
+
+        .form-group input:disabled,
+        .form-group select:disabled {
+            background: #2d2d2d;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: #FF6B6B;
+            color: black;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background: #ff8585;
+        }
+
+        .btn-secondary {
+            background: #3d3d3d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #4d4d4d;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #FF6B6B 0%, #ff8585 100%);
+            color: black;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            font-weight: 600;
+        }
+
+        .friends-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .friend-card {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px solid #3d3d3d;
+        }
+
+        .friend-card h4 {
+            color: #FF6B6B;
+            margin-bottom: 10px;
+        }
+
+        .streak-badge {
+            display: inline-block;
+            background: #FF6B6B;
+            color: black;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .water-bottle-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px 0;
+        }
+
+        .water-bottle {
+            width: 120px;
+            height: 300px;
+            background: linear-gradient(to bottom, #1a1a1a 0%, #2d2d2d 100%);
+            border: 4px solid #FF6B6B;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .water-level {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to bottom, #FF6B6B 0%, #ff4757 100%);
+            height: 0%;
+            transition: height 0.3s;
+        }
+
+        .water-slider {
+            width: 300px;
+            margin: 20px 0;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 8px;
+            background: #3d3d3d;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .water-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #FF6B6B;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .water-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #FF6B6B;
+            cursor: pointer;
+            border-radius: 50%;
+            border: none;
+        }
+
+        .water-stats {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .water-stats h3 {
+            color: #FF6B6B;
+            font-size: 2em;
+        }
+
+        .calendar-container {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .calendar-day {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #3d3d3d;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .calendar-day.today {
+            border-color: #FF6B6B;
+        }
+
+        .calendar-day.has-data {
+            background: rgba(255, 107, 107, 0.2);
+        }
+
+        .calendar-day-number {
+            font-weight: bold;
+            color: #FF6B6B;
+            margin-bottom: 5px;
+        }
+
+        .calendar-day-label {
+            font-size: 0.8em;
+            color: #888;
+        }
+
+        .calendar-day-value {
+            font-size: 0.9em;
+            color: white;
+            margin-top: 5px;
+        }
+
+        .sports-history {
+            margin-top: 20px;
+        }
+
+        .sport-entry {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #FF6B6B;
+            position: relative;
+        }
+
+        .sport-entry h4 {
+            color: #FF6B6B;
+            margin-bottom: 5px;
+        }
+
+        .sport-entry-actions {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+
+        .btn-small {
+            padding: 5px 12px;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+
+        .recommendation-box {
+            background: rgba(255, 107, 107, 0.1);
+            border: 2px solid #FF6B6B;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .recommendation-box h3 {
+            color: #FF6B6B;
+            margin-bottom: 10px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .calendar-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, #FF6B6B 0%, #ff8585 100%);
+            color: black;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: white;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: #FF6B6B;
+        }
+
+        .edit-profile-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .profile-display {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .profile-field {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #3d3d3d;
+        }
+
+        .profile-field:last-child {
+            border-bottom: none;
+        }
+
+        .profile-field-label {
+            color: #888;
+            font-weight: 600;
+        }
+
+        .profile-field-value {
+            color: white;
+            font-weight: 500;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .month-selector {
+            background: #1a1a1a;
+            color: white;
+            border: 2px solid #3d3d3d;
+            padding: 8px 15px;
+            border-radius: 8px;
+        }
+
+        .workout-indicator {
+            width: 8px;
+            height: 8px;
+            background: #FF6B6B;
+            border-radius: 50%;
+            margin: 2px auto;
+        }
+
+        .water-indicator {
+            font-size: 12px;
+            color: #FF6B6B;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏋️ TrainTogether</h1>
+            <p>Stay accountable. Build streaks. Achieve together.</p>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showSection('profile')">Profile</button>
+            <button class="nav-tab" onclick="showSection('friends')">Friends & Streaks</button>
+            <button class="nav-tab" onclick="showSection('hydration')">Hydration Tracker</button>
+            <button class="nav-tab" onclick="showSection('sports')">Sports History</button>
+            <button class="nav-tab" onclick="showSection('wellness')">Wellness Goals</button>
+        </div>
+
+        <!-- Profile Section -->
+        <div id="profile" class="content-section active">
+            <div class="profile-header">
+                <div class="profile-avatar">👤</div>
+                <h2 id="profileName">Your Profile</h2>
+                <button class="btn edit-profile-btn" id="editProfileBtn" onclick="toggleEditProfile()">Edit Profile</button>
+            </div>
+
+            <!-- Profile Display Mode -->
+            <div class="card" id="profileDisplay">
+                <h2>Personal Information</h2>
+                <div class="profile-display">
+                    <div class="profile-field">
+                        <span class="profile-field-label">Full Name:</span>
+                        <span class="profile-field-value" id="displayName">Not set</span>
+                    </div>
+                    <div class="profile-field">
+                        <span class="profile-field-label">Age:</span>
+                        <span class="profile-field-value" id="displayAge">Not set</span>
+                    </div>
+                    <div class="profile-field">
+                        <span class="profile-field-label">Gender:</span>
+                        <span class="profile-field-value" id="displayGender">Not set</span>
+                    </div>
+                    <div class="profile-field">
+                        <span class="profile-field-label">Weight:</span>
+                        <span class="profile-field-value" id="displayWeight">Not set</span>
+                    </div>
+                    <div class="profile-field">
+                        <span class="profile-field-label">Height:</span>
+                        <span class="profile-field-value" id="displayHeight">Not set</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Edit Mode -->
+            <div class="card hidden" id="profileEdit">
+                <h2>Edit Personal Information</h2>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="userName" placeholder="Enter your name">
+                </div>
+                <div class="two-column">
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="number" id="userAge" placeholder="25">
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <select id="userGender">
+                            <option value="">Select</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="two-column">
+                    <div class="form-group">
+                        <label>Weight (kg)</label>
+                        <input type="number" id="userWeight" placeholder="70">
+                    </div>
+                    <div class="form-group">
+                        <label>Height (cm)</label>
+                        <input type="number" id="userHeight" placeholder="175">
+                    </div>
+                </div>
+                <button class="btn" onclick="saveProfile()">Save Profile</button>
+                <button class="btn btn-secondary" onclick="cancelEditProfile()">Cancel</button>
+            </div>
+
+            <div class="card">
+                <h2>Your Fitness Stats</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3 id="currentStreak">0</h3>
+                        <p>Day Streak</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="totalWorkouts">0</h3>
+                        <p>Total Workouts</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="activeFriends">0</h3>
+                        <p>Active Friends</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Linked Sports History Summary -->
+            <div class="card">
+                <h2>Sports Background</h2>
+                <div id="profileSportsPreview">
+                    <p style="color: #888;">No sports history added yet. Visit the Sports History tab to add your experience.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Friends & Streaks Section -->
+        <div id="friends" class="content-section">
+            <div class="card">
+                <h2>Add Friend</h2>
+                <div class="form-group">
+                    <label>Friend's Username</label>
+                    <input type="text" id="friendUsername" placeholder="Enter username">
+                </div>
+                <button class="btn" onclick="addFriend()">Add Friend</button>
+            </div>
+
+            <div class="card">
+                <h2>Your Training Partners</h2>
+                <div class="friends-list" id="friendsList">
+                    <div class="friend-card">
+                        <h4>Sarah Johnson</h4>
+                        <p style="color: #888;">Last workout: Today</p>
+                        <span class="streak-badge">🔥 15 day streak</span>
+                    </div>
+                    <div class="friend-card">
+                        <h4>Mike Chen</h4>
+                        <p style="color: #888;">Last workout: Yesterday</p>
+                        <span class="streak-badge">🔥 8 day streak</span>
+                    </div>
+                    <div class="friend-card">
+                        <h4>Emma Davis</h4>
+                        <p style="color: #888;">Last workout: 2 days ago</p>
+                        <span class="streak-badge">🔥 22 day streak</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Create Training Streak</h2>
+                <div class="form-group">
+                    <label>Select Friend</label>
+                    <select id="streakFriend">
+                        <option value="">Choose a friend</option>
+                        <option value="sarah">Sarah Johnson</option>
+                        <option value="mike">Mike Chen</option>
+                        <option value="emma">Emma Davis</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Training Goal</label>
+                    <input type="text" placeholder="e.g., Gym 3x per week">
+                </div>
+                <button class="btn" onclick="createStreak()">Create Streak Challenge</button>
+            </div>
+        </div>
+
+        <!-- Hydration Tracker Section -->
+        <div id="hydration" class="content-section">
+            <div class="card">
+                <h2>💧 Daily Hydration Tracker</h2>
+                
+                <div class="form-group">
+                    <label>What did you drink?</label>
+                    <select id="drinkType">
+                        <option value="water">Water</option>
+                        <option value="juice">Juice</option>
+                        <option value="tea">Tea</option>
+                        <option value="coffee">Coffee</option>
+                        <option value="sports-drink">Sports Drink</option>
+                    </select>
+                </div>
+
+                <div class="water-bottle-container">
+                    <h3>Adjust Your Intake</h3>
+                    <div class="water-bottle">
+                        <div class="water-level" id="waterLevel"></div>
+                    </div>
+                    <input type="range" min="0" max="100" value="0" class="water-slider" id="waterSlider" oninput="updateWaterLevel()">
+                    <div class="water-stats">
+                        <h3 id="waterAmount">0 ml</h3>
+                        <p>of <span id="dailyWaterGoal">2000</span> ml daily goal</p>
+                    </div>
+                </div>
+
+                <button class="btn" onclick="logWater()">Log Water Intake</button>
+
+                <div class="recommendation-box">
+                    <h3>💡 Your Personalized Plan</h3>
+                    <p id="waterRecommendation">Based on your profile and activity level, you should drink approximately <strong>2.5 liters</strong> of water per day.</p>
+                </div>
+            </div>
+
+            <!-- Daily Calendar -->
+            <div class="card">
+                <div class="calendar-header">
+                    <h2>Daily Hydration - This Week</h2>
+                </div>
+                <div class="calendar-container" id="dailyWaterCalendar"></div>
+            </div>
+
+            <!-- Monthly Calendar -->
+            <div class="card">
+                <div class="calendar-header">
+                    <h2>Monthly Hydration</h2>
+                    <div class="calendar-nav">
+                        <select class="month-selector" id="monthSelector" onchange="updateMonthlyCalendar()">
+                            <option value="0">January</option>
+                            <option value="1">February</option>
+                            <option value="2">March</option>
+                            <option value="3">April</option>
+                            <option value="4">May</option>
+                            <option value="5">June</option>
+                            <option value="6">July</option>
+                            <option value="7">August</option>
+                            <option value="8">September</option>
+                            <option value="9">October</option>
+                            <option value="10">November</option>
+                            <option value="11">December</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="calendar-container" id="monthlyWaterCalendar"></div>
+            </div>
+        </div>
+
+        <!-- Sports History Section -->
+        <div id="sports" class="content-section">
+            <div class="card">
+                <h2>Add Sports Experience</h2>
+                <div class="form-group">
+                    <label>Sport</label>
+                    <input type="text" id="sportName" placeholder="e.g., Basketball, Soccer, Swimming">
+                </div>
+                <div class="form-group">
+                    <label>Team/Club</label>
+                    <input type="text" id="teamName" placeholder="e.g., City United FC">
+                </div>
+                <div class="two-column">
+                    <div class="form-group">
+                        <label>Start Year</label>
+                        <input type="number" id="sportStart" placeholder="2018">
+                    </div>
+                    <div class="form-group">
+                        <label>End Year</label>
+                        <input type="number" id="sportEnd" placeholder="2022">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Position/Role</label>
+                    <input type="text" id="sportPosition" placeholder="e.g., Point Guard, Midfielder">
+                </div>
+                <div class="form-group">
+                    <label>Achievements</label>
+                    <textarea id="sportAchievements" rows="3" placeholder="Any notable achievements or highlights..."></textarea>
+                </div>
+                <button class="btn" onclick="addSport()">Add to History</button>
+            </div>
+
+            <div class="card">
+                <h2>Your Sports Journey</h2>
+                <div class="sports-history" id="sportsHistory">
+                    <p style="color: #888;">No sports history added yet.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wellness Goals Section -->
+        <div id="wellness" class="content-section">
+            <div class="card">
+                <h2>Wellness & Training Recommendations</h2>
+                <div class="recommendation-box">
+                    <h3>🎯 Your Personalized Recommendations</h3>
+                    <div id="wellnessRecommendations">
+                        <p><strong>Daily Exercise:</strong> 30-45 minutes of moderate activity</p>
+                        <p><strong>Weekly Goal:</strong> 150-200 minutes of exercise</p>
+                        <p><strong>Monthly Target:</strong> 10-12 hours of structured training</p>
+                        <p style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #FF6B6B;">
+                            💡 <em>These recommendations are based on your age, weight, and height. Adjust based on your fitness level and consult with a healthcare professional before starting any new exercise program.</em>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Log Today's Workout</h2>
+                <div class="form-group">
+                    <label>Activity Type</label>
+                    <select id="workoutType">
+                        <option>Gym/Weights</option>
+                        <option>Running</option>
+                        <option>Cycling</option>
+                        <option>Swimming</option>
+                        <option>Sports Practice</option>
+                        <option>Yoga/Stretching</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Duration (minutes)</label>
+                    <input type="number" id="workoutDuration" placeholder="45">
+                </div>
+                <div class="form-group">
+                    <label>Intensity</label>
+                    <select id="workoutIntensity">
+                        <option>Light</option>
+                        <option>Moderate</option>
+                        <option>Intense</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Notes</label>
+                    <textarea id="workoutNotes" rows="3" placeholder="How did you feel? Any goals achieved?"></textarea>
+                </div>
+                <button class="btn" onclick="logWorkout()">Log Workout</button>
+            </div>
+
+            <!-- Workout Calendar -->
+            <div class="card">
+                <div class="calendar-header">
+                    <h2>This Month's Workouts</h2>
+                    <div class="calendar-nav">
+                        <select class="month-selector" id="workoutMonthSelector" onchange="updateWorkoutCalendar()">
+                            <option value="0">January</option>
+                            <option value="1">February</option>
+                            <option value="2">March</option>
+                            <option value="3">April</option>
+                            <option value="4">May</option>
+                            <option value="5">June</option>
+                            <option value="6">July</option>
+                            <option value="7">August</option>
+                            <option value="8">September</option>
+                            <option value="9">October</option>
+                            <option value="10">November</option>
+                            <option value="11">December</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="calendar-container" id="workoutCalendar"></div>
+            </div>
+
+            <div class="card">
+                <h2>This Week's Progress</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3 id="weeklyDays">0/7</h3>
+                        <p>Days Active</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="weeklyMinutes">0</h3>
+                        <p>Minutes Trained</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="weeklyGoal">0%</h3>
+                        <p>Weekly Goal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data storage
+        let profileData = {};
+        let sportsHistory = [];
+        let waterIntake = {};
+        let workoutLog = {};
+        let weeklyWorkoutMinutes = 0;
+
+        // Initialize calendars on load
+        window.onload = function() {
+            initializeDailyWaterCalendar();
+            updateMonthlyCalendar();
+            updateWorkoutCalendar();
+            
+            // Set current month
+            const currentMonth = new Date().getMonth();
+            document.getElementById('monthSelector').value = currentMonth;
+            document.getElementById('workoutMonthSelector').value = currentMonth;
+        };
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            const tabs = document.querySelectorAll('.nav-tab');
+            
+            sections.forEach(section => section.classList.remove('active'));
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Profile Management
+        function toggleEditProfile() {
+            document.getElementById('profileDisplay').classList.add('hidden');
+            document.getElementById('profileEdit').classList.remove('hidden');
+            document.getElementById('editProfileBtn').style.display = 'none
